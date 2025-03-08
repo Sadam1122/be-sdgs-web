@@ -1,0 +1,317 @@
+2024-09-07 22:13:15.897497: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-07 22:13:15.924037: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-07 22:13:15.932276: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-07 22:13:15.951587: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-09-07 22:13:17.512924: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+ * Serving Flask app 'main'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://103.27.206.194:5000
+[33mPress CTRL+C to quit[0m
+/home/telkom/sdgstelkom/main.py:48: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  df.fillna('', inplace=True)
+182.253.194.20 - - [07/Sep/2024 23:31:39] "GET /data_dosen HTTP/1.1" 200 -
+182.253.194.20 - - [07/Sep/2024 23:31:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+162.142.125.195 - - [08/Sep/2024 00:36:35] "[33mGET / HTTP/1.1[0m" 404 -
+162.142.125.195 - - [08/Sep/2024 00:36:36] code 505, message Invalid HTTP version (2.0)
+162.142.125.195 - - [08/Sep/2024 00:36:36] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+162.142.125.223 - - [08/Sep/2024 03:19:20] code 400, message Bad request version ('À\x14À')
+162.142.125.223 - - [08/Sep/2024 03:19:20] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03S\x9c8«yXuÉno\x90Î\x93í\x02R~§:Õäàâ\x11p\x1a\x8ddëÍ\x113 fü"mq\x09Ûæèâ\x12¾Ò\x02\x9b¹\x170\x90U|Z:Ô#9+±y\x1frÂ\x00&Ì¨Ì©À/À0À+À,À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+162.142.125.223 - - [08/Sep/2024 03:19:25] "[33mGET / HTTP/1.1[0m" 404 -
+162.142.125.223 - - [08/Sep/2024 03:19:28] "[33mGET / HTTP/1.1[0m" 404 -
+162.142.125.223 - - [08/Sep/2024 03:19:29] code 505, message Invalid HTTP version (2.0)
+162.142.125.223 - - [08/Sep/2024 03:19:29] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+147.185.132.85 - - [08/Sep/2024 08:35:48] "[33mGET / HTTP/1.0[0m" 404 -
+167.94.145.103 - - [08/Sep/2024 10:14:15] code 400, message Bad request version ('À\x14À')
+167.94.145.103 - - [08/Sep/2024 10:14:15] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03(:Ïë¾Ì\x14O°¥ÆÀ-§Ø\x8feO7"\x02"¡\x94ù\x1b\x08°]\x91©\x8e Lð±¨\x1cl\x80^1â\x05È08\x07\x14¸ô§\x10\x08|\x17\x06×ô\x18\x83%í1I\x00&Ì¨Ì©À/À0À+À,À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+167.94.145.103 - - [08/Sep/2024 10:14:19] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.145.103 - - [08/Sep/2024 10:14:23] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.145.103 - - [08/Sep/2024 10:14:24] code 505, message Invalid HTTP version (2.0)
+167.94.145.103 - - [08/Sep/2024 10:14:24] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+80.66.76.121 - - [08/Sep/2024 10:43:46] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+80.66.76.121 - - [08/Sep/2024 10:43:46] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+207.154.217.111 - - [08/Sep/2024 13:05:01] "[33mGET / HTTP/1.0[0m" 404 -
+164.90.210.55 - - [08/Sep/2024 13:05:01] "[33mGET /query?q=SHOW+DIAGNOSTICS HTTP/1.1[0m" 404 -
+167.99.254.237 - - [08/Sep/2024 13:05:01] "[33mGET /cgi-bin/authLogin.cgi HTTP/1.1[0m" 404 -
+164.90.174.119 - - [08/Sep/2024 13:05:01] "[33mGET /v2/_catalog HTTP/1.1[0m" 404 -
+167.71.35.122 - - [08/Sep/2024 13:05:01] "[33mGET /solr/admin/info/system HTTP/1.1[0m" 404 -
+161.35.217.28 - - [08/Sep/2024 13:05:01] code 400, message Bad request version ('À\x13À')
+161.35.217.28 - - [08/Sep/2024 13:05:01] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03¨ÿ`?vé<\x81ÞÎ\x12ùî\x15=\x16\x07ÆÏÂ#,Ià.¹8IR®¦9 \x01=\x82Î'W{/WÂê¨d©õF\x96\x95qØø\x061Ü\x901§Uisº/\x00&À+À/À,À0Ì©Ì¨À\x09À\x13À[0m" HTTPStatus.BAD_REQUEST -
+159.223.25.187 - - [08/Sep/2024 13:05:01] "[33mGET / HTTP/1.1[0m" 404 -
+167.71.35.122 - - [08/Sep/2024 13:05:02] "[33mGET /solr/admin/cores?action=STATUS&wt=json HTTP/1.1[0m" 404 -
+161.35.217.28 - - [08/Sep/2024 13:05:02] code 400, message Bad request version ('ìà\x10\x804¸_H\x97Q¶')
+161.35.217.28 - - [08/Sep/2024 13:05:02] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03<\x05.?\x93\x9e\x9d\x087NoõjxkRTÎ¥W-.¾\x83`\x13\x01\x91\x00X = ìà\x10\x804¸_H\x97Q¶\x0d [0m" HTTPStatus.BAD_REQUEST -
+161.35.217.28 - - [08/Sep/2024 13:05:02] code 400, message Bad request version ('À\x13À')
+161.35.217.28 - - [08/Sep/2024 13:05:02] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03OG®\x05é%Ü³möl\x91Ô/,×'×%,\x13o4\x14ñý%µUÜë¨ ¶µ\x9a\x81X½Zf\x9d: xyÎY§.L\x05)b0õFo\x170ï$7@\x0d\x00&À+À/À,À0Ì©Ì¨À\x09À\x13À[0m" HTTPStatus.BAD_REQUEST -
+52.76.71.100 - - [08/Sep/2024 13:05:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+167.71.35.203 - - [08/Sep/2024 13:08:18] code 400, message Bad request version ("\x89é«\x16ñ.»P&×ØCÄjÀ·°í`\x18[ªO~0~3v\x00>\x13\x02\x13\x03\x13\x01À,À0\x00\x9fÌ©Ì¨ÌªÀ+À/\x00\x9eÀ$À(\x00kÀ#À'\x00gÀ")
+167.71.35.203 - - [08/Sep/2024 13:08:18] "[35m[1m\x16\x03\x01\x01$\x01\x00\x01 \x03\x03\x8a6]\x0e>~0\x84ìZô'è\x07éR\x19/\x01»^K£Ñè¨\x1eõÚ¬J\x8c JêÒ\x0b\x89é«\x16ñ.»P&×ØCÄjÀ·°í`\x18[ªO~0~3v\x00>\x13\x02\x13\x03\x13\x01À,À0\x00\x9fÌ©Ì¨ÌªÀ+À/\x00\x9eÀ$À(\x00kÀ#À'\x00gÀ[0m" HTTPStatus.BAD_REQUEST -
+198.235.24.205 - - [08/Sep/2024 15:59:19] "[33mGET / HTTP/1.1[0m" 404 -
+91.238.181.34 - - [09/Sep/2024 04:08:46] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+91.238.181.34 - - [09/Sep/2024 04:08:46] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+45.84.89.2 - - [09/Sep/2024 06:51:33] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+45.84.89.2 - - [09/Sep/2024 06:51:33] "[35m[1m\x16\x03\x01\x00\x85\x01\x00\x00\x81\x03\x03UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU\x00\x00\x06À0\x00\x9c\x00\x9d\x01\x00\x00R\x00\x0b\x00\x04\x03\x00\x01\x02\x00[0m" HTTPStatus.BAD_REQUEST -
+147.185.132.129 - - [09/Sep/2024 07:12:32] "[33mGET / HTTP/1.0[0m" 404 -
+4.156.21.121 - - [09/Sep/2024 08:07:12] "[33mGET /v2/ HTTP/1.1[0m" 404 -
+206.168.34.39 - - [09/Sep/2024 09:08:33] code 400, message Bad request version ('Ø\x02þ')
+206.168.34.39 - - [09/Sep/2024 09:08:33] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\x17#\x18%{òÏ\\\x0fÈ¬\x0f\x0b¦\x0cØ\x02þ[0m" HTTPStatus.BAD_REQUEST -
+206.168.34.39 - - [09/Sep/2024 09:08:37] "[33mGET / HTTP/1.1[0m" 404 -
+206.168.34.39 - - [09/Sep/2024 09:08:41] "[33mGET / HTTP/1.1[0m" 404 -
+206.168.34.39 - - [09/Sep/2024 09:08:42] code 505, message Invalid HTTP version (2.0)
+206.168.34.39 - - [09/Sep/2024 09:08:42] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+198.235.24.46 - - [09/Sep/2024 12:48:16] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.138.62 - - [09/Sep/2024 17:54:32] code 400, message Bad request version ('\x92Rd\x83Cú®9§èÿ\x9fâ\x00')
+167.94.138.62 - - [09/Sep/2024 17:54:32] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\x09ä\x85¡í)\x8eð\x92GUup\x9fÔb{£Çgsp\x98¯M\x1fe\x88Õãl\x92 l\x96\x09³\x9fy\x92æ\x14)\x0c\x92Rd\x83Cú®9§èÿ\x9fâ\x00[0m" HTTPStatus.BAD_REQUEST -
+167.94.138.62 - - [09/Sep/2024 17:54:37] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.138.62 - - [09/Sep/2024 17:54:43] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.138.62 - - [09/Sep/2024 17:54:44] code 505, message Invalid HTTP version (2.0)
+167.94.138.62 - - [09/Sep/2024 17:54:44] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+71.6.134.233 - - [09/Sep/2024 20:17:31] code 400, message Bad request version ('À\x14À')
+71.6.134.233 - - [09/Sep/2024 20:17:31] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03mº\x1eY\x9b\x1bÂþÁh>ÞÒ '¤`«PÎÛJ71zcT»G°Ñg »p\x82H)2i\x15:Ø°tÉ%\x0f{ß½\x98ÑÔÛN\x84Á\x8d]\x0f\x8d§\x16>\x00&Ì¨Ì©À/À0À+À,À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+71.6.134.233 - - [09/Sep/2024 20:33:05] "[33mGET / HTTP/1.1[0m" 404 -
+71.6.134.233 - - [09/Sep/2024 20:33:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+194.165.16.76 - - [09/Sep/2024 20:36:07] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+194.165.16.76 - - [09/Sep/2024 20:36:07] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+64.226.65.160 - - [10/Sep/2024 02:22:30] code 400, message Bad request version ('ÅD\x8b%Ý\x1a!å.½e\x04\x04ÍûLìÊ\x1a#ÉÕVP')
+64.226.65.160 - - [10/Sep/2024 02:22:30] "[35m[1m\x16\x03\x01\x00ê\x01\x00\x00æ\x03\x03ÛyG2\x9a9óo~\x01k¶¾1å1;õ§\x1d9R^\x8c+*Uï\x02\x91ê\x14  ÅD\x8b%Ý\x1a!å.½e\x04\x04ÍûLìÊ\x1a#ÉÕVP\x85[0m" HTTPStatus.BAD_REQUEST -
+64.226.65.160 - - [10/Sep/2024 02:22:31] "[33mGET / HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:31] "[33mGET / HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:32] "[33mGET /server HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:32] "[33mGET /version HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:32] "[33mGET /.vscode/sftp.json HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:33] "[33mGET /about HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:33] "[33mGET /debug/default/view?panel=config HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:34] "[33mGET /v2/_catalog HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:34] "[33mGET /ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:35] "[33mGET /server-status HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:35] "[33mGET /_all_dbs HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:36] "[33mGET /.DS_Store HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:36] "[33mGET /.env HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:37] "[33mGET /.git/config HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:37] "[33mGET /s/439313e2630323e27323e2330313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:38] "[33mGET /config.json HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:38] "[33mGET /telescope/requests HTTP/1.1[0m" 404 -
+64.226.65.160 - - [10/Sep/2024 02:22:39] "[33mGET /?rest_route=/wp/v2/users/ HTTP/1.1[0m" 404 -
+46.101.92.64 - - [10/Sep/2024 05:12:59] code 400, message Bad request version ('À\x14À')
+46.101.92.64 - - [10/Sep/2024 05:12:59] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03Ñ\x8b\x9dt1åLÙ\x1cwÕP\x8cYË­æ³º¾7Þû¸Æáß8¶øÎR\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+46.101.92.64 - - [10/Sep/2024 05:12:59] code 400, message Bad request version ('À\x14À')
+46.101.92.64 - - [10/Sep/2024 05:12:59] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03£ËÅl\x0c\x87"'\x11;2ÌCÒ\x83\x82\x10ÀÏ\x81HÜ\x12Ö¬»\x8d\x1aÀ[?p\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+46.101.92.64 - - [10/Sep/2024 05:13:00] "[33mGET / HTTP/1.1[0m" 404 -
+139.59.64.53 - - [10/Sep/2024 07:19:01] code 400, message Bad request version ('À\x14À')
+139.59.64.53 - - [10/Sep/2024 07:19:01] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03±J\x8b\x06Y\x1596«\x08{wÇ0¿=¥A§[\x1d\x85Â4ãI<\x16\x08Þ\x02%\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+139.59.64.53 - - [10/Sep/2024 07:19:01] code 400, message Bad request version ('À\x14À')
+139.59.64.53 - - [10/Sep/2024 07:19:01] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x8f\x9a\x1eßñø[Ë\x02\x09Èâ\x1aQFmñpTúR-éØ_.\x86³IQ\x8b\x8d\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+139.59.64.53 - - [10/Sep/2024 07:19:01] "[33mGET / HTTP/1.1[0m" 404 -
+45.84.89.2 - - [10/Sep/2024 08:34:36] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+45.84.89.2 - - [10/Sep/2024 08:34:36] "[35m[1m\x16\x03\x01\x00\x85\x01\x00\x00\x81\x03\x03UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU\x00\x00\x06À0\x00\x9c\x00\x9d\x01\x00\x00R\x00\x0b\x00\x04\x03\x00\x01\x02\x00[0m" HTTPStatus.BAD_REQUEST -
+198.235.24.36 - - [10/Sep/2024 12:52:39] "[33mGET / HTTP/1.0[0m" 404 -
+114.202.175.155 - - [10/Sep/2024 12:53:28] code 400, message Bad HTTP/0.9 request type ('\x10\x01\x01\x03\x00\x00\x01\x00û\x00\x00\x00\x04\x00\x00t\x00\x10\x00\x00\x00\x00\x00\x00@D\x00\x00\x00\x00\x00\x00°\x00\x00\x18\x00\x00\x00\x00')
+114.202.175.155 - - [10/Sep/2024 12:53:28] "[35m[1m\x10\x01\x01\x03\x00\x00\x01\x00û\x00\x00\x00\x04\x00\x00t\x00\x10\x00\x00\x00\x00\x00\x00@D\x00\x00\x00\x00\x00\x00°\x00\x00\x18\x00\x00\x00\x00\x09\x08\x00\x00^\x00\x08\x00n\x00\x00\x00n\x00\x00\x00n\x00\x0e\x00\x8a\x00"\x00Î\x00\x04\x00Ó\x00\x06\x00ß\x00[0m" HTTPStatus.BAD_REQUEST -
+198.235.24.245 - - [10/Sep/2024 20:11:39] "[33mGET / HTTP/1.1[0m" 404 -
+198.235.24.144 - - [10/Sep/2024 21:52:59] "[33mGET / HTTP/1.1[0m" 404 -
+147.185.132.108 - - [11/Sep/2024 07:13:01] "[33mGET / HTTP/1.0[0m" 404 -
+188.119.66.112 - - [11/Sep/2024 08:14:44] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+188.119.66.112 - - [11/Sep/2024 08:14:44] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+206.168.34.41 - - [11/Sep/2024 11:51:49] "[33mGET / HTTP/1.1[0m" 404 -
+206.168.34.41 - - [11/Sep/2024 11:51:50] code 505, message Invalid HTTP version (2.0)
+206.168.34.41 - - [11/Sep/2024 11:51:50] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+167.94.138.125 - - [11/Sep/2024 12:00:05] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.138.125 - - [11/Sep/2024 12:00:05] code 505, message Invalid HTTP version (2.0)
+167.94.138.125 - - [11/Sep/2024 12:00:05] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+206.168.34.37 - - [11/Sep/2024 12:01:55] "[33mGET / HTTP/1.1[0m" 404 -
+206.168.34.37 - - [11/Sep/2024 12:01:56] code 505, message Invalid HTTP version (2.0)
+206.168.34.37 - - [11/Sep/2024 12:01:56] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+206.168.34.55 - - [11/Sep/2024 12:12:41] "[33mGET / HTTP/1.1[0m" 404 -
+206.168.34.55 - - [11/Sep/2024 12:12:42] code 505, message Invalid HTTP version (2.0)
+206.168.34.55 - - [11/Sep/2024 12:12:42] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+162.142.125.45 - - [11/Sep/2024 12:14:30] "[33mGET / HTTP/1.1[0m" 404 -
+162.142.125.45 - - [11/Sep/2024 12:14:31] code 505, message Invalid HTTP version (2.0)
+162.142.125.45 - - [11/Sep/2024 12:14:31] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+206.168.34.59 - - [11/Sep/2024 12:17:03] "[33mGET / HTTP/1.1[0m" 404 -
+206.168.34.59 - - [11/Sep/2024 12:17:03] code 505, message Invalid HTTP version (2.0)
+206.168.34.59 - - [11/Sep/2024 12:17:03] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+167.94.138.113 - - [11/Sep/2024 12:27:17] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.138.113 - - [11/Sep/2024 12:27:17] code 505, message Invalid HTTP version (2.0)
+167.94.138.113 - - [11/Sep/2024 12:27:17] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+167.94.138.114 - - [11/Sep/2024 12:58:27] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.138.114 - - [11/Sep/2024 12:58:28] code 505, message Invalid HTTP version (2.0)
+167.94.138.114 - - [11/Sep/2024 12:58:28] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+194.165.16.10 - - [11/Sep/2024 13:54:25] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+194.165.16.10 - - [11/Sep/2024 13:54:25] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+80.66.83.114 - - [11/Sep/2024 18:46:23] code 400, message Bad request syntax ('\x04\x01\x00\x194eÂ\x02\x00')
+80.66.83.114 - - [11/Sep/2024 18:46:23] "[35m[1m\x04\x01\x00\x194eÂ\x02\x00[0m" HTTPStatus.BAD_REQUEST -
+80.66.83.114 - - [11/Sep/2024 18:46:23] code 400, message Bad request syntax ('\x04\x01\x00\x19h/\x12á\x00')
+80.66.83.114 - - [11/Sep/2024 18:46:23] "[35m[1m\x04\x01\x00\x19h/\x12á\x00[0m" HTTPStatus.BAD_REQUEST -
+80.66.83.114 - - [11/Sep/2024 18:47:23] code 400, message Bad request syntax ('\x05\x01\x00')
+80.66.83.114 - - [11/Sep/2024 18:47:23] "[35m[1m\x05\x01\x00[0m" HTTPStatus.BAD_REQUEST -
+80.66.83.114 - - [11/Sep/2024 18:47:23] "[33mCONNECT hotmail-com.olc.protection.outlook.com:25 HTTP/1.1[0m" 404 -
+80.66.83.114 - - [11/Sep/2024 18:47:24] code 400, message Bad request syntax ('\x05\x01\x00')
+80.66.83.114 - - [11/Sep/2024 18:47:24] "[35m[1m\x05\x01\x00[0m" HTTPStatus.BAD_REQUEST -
+80.66.83.114 - - [11/Sep/2024 18:47:24] "[33mCONNECT hotmail-com.olc.protection.outlook.com:25 HTTP/1.1[0m" 404 -
+80.66.83.114 - - [11/Sep/2024 22:01:07] code 400, message Bad HTTP/0.9 request type ('\x04\x01\x00PUÎ')
+80.66.83.114 - - [11/Sep/2024 22:01:07] "[35m[1m\x04\x01\x00PUÎ s\x00[0m" HTTPStatus.BAD_REQUEST -
+80.66.83.114 - - [11/Sep/2024 22:02:07] code 400, message Bad request syntax ('\x05\x01\x00')
+80.66.83.114 - - [11/Sep/2024 22:02:07] "[35m[1m\x05\x01\x00[0m" HTTPStatus.BAD_REQUEST -
+80.66.83.114 - - [11/Sep/2024 22:02:07] "[33mCONNECT 85.206.160.115:80 HTTP/1.1[0m" 404 -
+167.94.146.59 - - [12/Sep/2024 03:53:47] code 400, message Bad request version ('À\x14À')
+167.94.146.59 - - [12/Sep/2024 03:53:47] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\x07;y\x01+Ý\x8c=\x02nP4\x929ãë.ªÏÅò:\x08\x89ÿ&Ðãénð\x19 ÇÊ·ªP\x11"\x09\x08Â\x9az?8 ZÀûD\x89\x91ÍmY²\x01\x03õ0\x93º«\x00&Ì¨Ì©À/À0À+À,À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+167.94.146.59 - - [12/Sep/2024 03:53:50] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.146.59 - - [12/Sep/2024 03:53:54] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.146.59 - - [12/Sep/2024 03:53:54] code 505, message Invalid HTTP version (2.0)
+167.94.146.59 - - [12/Sep/2024 03:53:54] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+198.235.24.201 - - [12/Sep/2024 08:53:11] "[33mGET / HTTP/1.0[0m" 404 -
+194.165.16.76 - - [12/Sep/2024 09:45:09] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+194.165.16.76 - - [12/Sep/2024 09:45:09] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+45.84.89.3 - - [12/Sep/2024 10:10:28] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+45.84.89.3 - - [12/Sep/2024 10:10:28] "[35m[1m\x16\x03\x01\x00\x85\x01\x00\x00\x81\x03\x03UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU\x00\x00\x06À0\x00\x9c\x00\x9d\x01\x00\x00R\x00\x0b\x00\x04\x03\x00\x01\x02\x00[0m" HTTPStatus.BAD_REQUEST -
+80.82.70.133 - - [12/Sep/2024 10:25:24] "[33mGET / HTTP/1.0[0m" 404 -
+205.210.31.65 - - [12/Sep/2024 11:34:32] "[33mGET / HTTP/1.1[0m" 404 -
+165.22.250.119 - - [12/Sep/2024 11:56:10] code 400, message Bad request version ('À\x13À')
+165.22.250.119 - - [12/Sep/2024 11:56:10] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03azÂ7³!ÝE\x19TøØý¾Cb'h|\x97¬½\x023Ó*0\x04wþ»\x81 ¿NÈSêZs2ûB\x10>3r®\x12¯\x15Z\x95["}\x1f\x94ð¨Ø½<¨V\x00&À+À/À,À0Ì©Ì¨À\x09À\x13À[0m" HTTPStatus.BAD_REQUEST -
+165.22.250.119 - - [12/Sep/2024 11:56:11] code 400, message Bad request syntax ('help')
+165.22.250.119 - - [12/Sep/2024 11:56:11] "[35m[1mhelp[0m" HTTPStatus.BAD_REQUEST -
+23.94.20.2 - - [12/Sep/2024 12:47:57] code 400, message Bad request syntax ('\x03\x00\x00\x13\x0eà\x00\x00\x00\x00\x00\x01\x00\x08\x00\x03\x00\x00\x00')
+23.94.20.2 - - [12/Sep/2024 12:47:57] "[35m[1m\x03\x00\x00\x13\x0eà\x00\x00\x00\x00\x00\x01\x00\x08\x00\x03\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+157.230.247.206 - - [12/Sep/2024 17:13:40] code 400, message Bad request version ('À\x13À')
+157.230.247.206 - - [12/Sep/2024 17:13:40] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\x99íR\x18SäK°\x04ü\x03º|\x16M?OÃnoêÙ^û­\x89-b$ñµ8 \x18\x8eTµïËÇ/?<»f&\x05t]Í5´D®[\x899\\Ø\x9e gøbm\x00&À+À/À,À0Ì©Ì¨À\x09À\x13À[0m" HTTPStatus.BAD_REQUEST -
+157.230.247.206 - - [12/Sep/2024 17:13:40] code 400, message Bad request syntax ('help')
+157.230.247.206 - - [12/Sep/2024 17:13:40] "[35m[1mhelp[0m" HTTPStatus.BAD_REQUEST -
+167.94.138.34 - - [12/Sep/2024 23:31:56] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03îq$Á¦\x91n\x01Wälz÷¦¤|¯çª½Y¼\x8c\x1b.\xad\x7f\x9aÅ\x03µã')
+167.94.138.34 - - [12/Sep/2024 23:31:56] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03îq$Á¦\x91n\x01Wälz÷¦¤|¯çª½Y¼\x8c\x1b.­\x7f\x9aÅ\x03µã Â\x12Nê[0m" HTTPStatus.BAD_REQUEST -
+167.94.138.34 - - [12/Sep/2024 23:32:00] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.138.34 - - [12/Sep/2024 23:32:05] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.138.34 - - [12/Sep/2024 23:32:06] code 505, message Invalid HTTP version (2.0)
+167.94.138.34 - - [12/Sep/2024 23:32:06] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+91.238.181.35 - - [13/Sep/2024 05:47:20] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+91.238.181.35 - - [13/Sep/2024 05:47:20] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+154.213.185.206 - - [13/Sep/2024 10:35:26] code 400, message Bad request syntax ('JDWP-Handshake')
+154.213.185.206 - - [13/Sep/2024 10:35:26] "[35m[1mJDWP-Handshake[0m" HTTPStatus.BAD_REQUEST -
+205.210.31.58 - - [13/Sep/2024 11:51:54] "[33mGET / HTTP/1.0[0m" 404 -
+46.101.8.131 - - [13/Sep/2024 14:09:52] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x01ý\x01\x00\x01ù\x03\x03XãÜÈÿF\x8b:'á£¤Èº¢$1ÍÊ=¾Ò~k^ó«þ")
+46.101.8.131 - - [13/Sep/2024 14:09:52] "[35m[1m\x16\x03\x01\x01ý\x01\x00\x01ù\x03\x03XãÜÈÿF\x8b:'á£¤Èº¢$1ÍÊ=¾Ò~k^ó«þ `\x93F\x00\x01<Ì\x14Ì\x13Ì\x15À0À,À(À$À\x14À[0m" HTTPStatus.BAD_REQUEST -
+198.235.24.224 - - [13/Sep/2024 21:29:51] "[33mGET / HTTP/1.1[0m" 404 -
+91.238.181.32 - - [14/Sep/2024 00:59:49] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+91.238.181.32 - - [14/Sep/2024 00:59:49] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+45.84.89.3 - - [14/Sep/2024 02:08:21] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+45.84.89.3 - - [14/Sep/2024 02:08:21] "[35m[1m\x16\x03\x01\x00\x85\x01\x00\x00\x81\x03\x03UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU\x00\x00\x06À0\x00\x9c\x00\x9d\x01\x00\x00R\x00\x0b\x00\x04\x03\x00\x01\x02\x00[0m" HTTPStatus.BAD_REQUEST -
+198.235.24.54 - - [14/Sep/2024 02:26:31] "[33mGET / HTTP/1.1[0m" 404 -
+147.185.132.171 - - [14/Sep/2024 03:28:31] "[33mGET / HTTP/1.1[0m" 404 -
+199.45.154.147 - - [14/Sep/2024 04:19:55] code 400, message Bad request syntax ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\x9a_\x9eVXæJ\x8cn\x147Y')
+199.45.154.147 - - [14/Sep/2024 04:19:55] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\x9a_\x9eVXæJ\x8cn\x147Y[0m" HTTPStatus.BAD_REQUEST -
+199.45.154.147 - - [14/Sep/2024 04:19:58] "[33mGET / HTTP/1.1[0m" 404 -
+199.45.154.147 - - [14/Sep/2024 04:20:01] "[33mGET / HTTP/1.1[0m" 404 -
+199.45.154.147 - - [14/Sep/2024 04:20:01] code 505, message Invalid HTTP version (2.0)
+199.45.154.147 - - [14/Sep/2024 04:20:01] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+206.81.31.173 - - [14/Sep/2024 04:43:26] "[33mGET / HTTP/1.1[0m" 404 -
+147.185.132.55 - - [14/Sep/2024 06:09:12] "[33mGET / HTTP/1.0[0m" 404 -
+128.14.227.37 - - [14/Sep/2024 06:13:35] code 400, message Bad request version ('\x00\x9eÌ¨Ìª\x003\x00=\x00\x16À')
+128.14.227.37 - - [14/Sep/2024 06:13:35] "[35m[1m\x16\x03\x01\x01\x17\x01\x00\x01\x13\x03\x03;ò\x1b¡á\x99&\x0e(\x80Í9\x8f\x94G\x1dïý]¹\x99Ù\x8bsÃ\x8a\x89\x93ØTîu N^ð0\x9di£Aä¨\x1a¦i\x8aaoE\x06'4¯\x04\x124\x00HûFYYBg\x004Ì¨Ì©À/À0À+À,À\x09\x00\x9eÌ¨Ìª\x003\x00=\x00\x16À[0m" HTTPStatus.BAD_REQUEST -
+128.14.227.37 - - [14/Sep/2024 06:13:45] "[33mGET / HTTP/1.1[0m" 404 -
+128.14.227.37 - - [14/Sep/2024 06:13:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+128.14.227.37 - - [14/Sep/2024 06:13:46] "[33mGET /robots.txt HTTP/1.1[0m" 404 -
+128.14.227.37 - - [14/Sep/2024 06:13:47] "[33mGET /sitemap.xml HTTP/1.1[0m" 404 -
+45.58.165.222 - - [14/Sep/2024 14:00:14] code 400, message Bad request syntax ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x9cCì\x91H\x00Ö\x95\x9c¢ª')
+45.58.165.222 - - [14/Sep/2024 14:00:14] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x9cCì\x91H\x00Ö\x95\x9c¢ª[0m" HTTPStatus.BAD_REQUEST -
+45.58.165.222 - - [14/Sep/2024 14:00:15] code 400, message Bad request version ('À\x14À')
+45.58.165.222 - - [14/Sep/2024 14:00:15] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03ùÉS\x1af\x0c·\x8axªÒhâ$eÔ\x0e°y+µ;gÎÛ\x12¨Wi\x8aDý\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+45.58.165.222 - - [14/Sep/2024 14:00:15] "[33mGET / HTTP/1.1[0m" 404 -
+178.128.36.44 - - [14/Sep/2024 14:40:36] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01ý\x01\x00\x01ù\x03\x03\x03\xad\x97ºSª2Zpesï´\x19"Vîâ¸\x17£9û¹`\x10\x10')
+178.128.36.44 - - [14/Sep/2024 14:40:36] "[35m[1m\x16\x03\x01\x01ý\x01\x00\x01ù\x03\x03\x03­\x97ºSª2Zpesï´\x19"Vîâ¸\x17£9û¹`\x10\x10\x1e³©n\x91\x00\x01<Ì\x14Ì\x13Ì\x15À0À,À(À$À\x14À[0m" HTTPStatus.BAD_REQUEST -
+80.66.76.121 - - [14/Sep/2024 20:56:54] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+80.66.76.121 - - [14/Sep/2024 20:56:54] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+80.82.70.133 - - [15/Sep/2024 01:09:10] "[33mGET / HTTP/1.0[0m" 404 -
+198.235.24.82 - - [15/Sep/2024 02:09:09] "[33mGET / HTTP/1.0[0m" 404 -
+45.84.89.2 - - [15/Sep/2024 02:36:56] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+45.84.89.2 - - [15/Sep/2024 02:36:56] "[35m[1m\x16\x03\x01\x00\x85\x01\x00\x00\x81\x03\x03UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU\x00\x00\x06À0\x00\x9c\x00\x9d\x01\x00\x00R\x00\x0b\x00\x04\x03\x00\x01\x02\x00[0m" HTTPStatus.BAD_REQUEST -
+198.235.24.213 - - [15/Sep/2024 02:47:01] "[33mGET / HTTP/1.1[0m" 404 -
+162.216.149.175 - - [15/Sep/2024 04:42:33] code 400, message Bad request version ('À\x13À')
+162.216.149.175 - - [15/Sep/2024 04:42:33] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\x08¢Ã[\x96\x99Î\x01÷ä\x86ÕÞ\x8eçÕS\x92£æ\x16=}0\x7fÎ=ñbô\x864 ©DlËåu\x86P~ÛfØÓHypûÑ%²Y5,\x82Ù÷Û\x8aÁ\x01äí\x00&À+À/À,À0Ì©Ì¨À\x09À\x13À[0m" HTTPStatus.BAD_REQUEST -
+162.216.149.175 - - [15/Sep/2024 04:42:34] code 400, message Bad request version ('À(À$À\x14À')
+162.216.149.175 - - [15/Sep/2024 04:42:34] "[35m[1m\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03Ýü\x1cû¬*®Ã\x8a\x9aå\x8c\x8c8ô\x05Qø4*«K[\x17÷\x87 ï\x8d\x97s\x99\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À'À#À\x13À\x09À(À$À\x14À[0m" HTTPStatus.BAD_REQUEST -
+165.232.40.33 - - [15/Sep/2024 13:14:58] code 400, message Bad request version ('\x08ºÍ\x00oP\x03ËâÐv¨\x07\x00\x01<Ì\x14Ì\x13Ì\x15À0À,À(À$À\x14À')
+165.232.40.33 - - [15/Sep/2024 13:14:58] "[35m[1m\x16\x03\x01\x01ý\x01\x00\x01ù\x03\x03g\x08Ò>w¸j\x00\x85aØú\x9bHsâ«4\x09\x08ºÍ\x00oP\x03ËâÐv¨\x07\x00\x01<Ì\x14Ì\x13Ì\x15À0À,À(À$À\x14À[0m" HTTPStatus.BAD_REQUEST -
+194.165.16.73 - - [15/Sep/2024 15:19:23] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+194.165.16.73 - - [15/Sep/2024 15:19:23] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+18.236.67.37 - - [15/Sep/2024 15:22:54] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.138.60 - - [15/Sep/2024 16:14:23] code 400, message Bad request version ('À\x14À')
+167.94.138.60 - - [15/Sep/2024 16:14:23] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x032N´è\x19pN8&ýI\x96¡%ö\x92e\x10\x8a\x13£ïju\x03¾RP»\x80©- Õ°*q[P4Cå¿*.\x1bºA\x88ïg$\x82\x17&B\x8c\x0f)¨Cº4\x9b½\x00&Ì¨Ì©À/À0À+À,À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+8.211.45.55 - - [15/Sep/2024 16:52:40] code 400, message Bad request version ('À\x13À')
+8.211.45.55 - - [15/Sep/2024 16:52:40] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03I\x06²ù¼\x99iÀYûøºe-\x83Ud]\x0e\x8d·b8´gÆÝ9dZ8f gÁ\x81i³öòË°©\x19NÖ½\x95g|püé<Z¡\x90T·é¥8'O;\x00&À+À/À,À0Ì©Ì¨À\x09À\x13À[0m" HTTPStatus.BAD_REQUEST -
+8.211.45.55 - - [15/Sep/2024 16:52:50] "[33mGET / HTTP/1.1[0m" 404 -
+185.180.140.6 - - [15/Sep/2024 16:54:52] "[33mGET /cgi-bin/authLogin.cgi HTTP/1.1[0m" 404 -
+45.84.89.2 - - [16/Sep/2024 03:14:37] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+45.84.89.2 - - [16/Sep/2024 03:14:37] "[35m[1m\x16\x03\x01\x00\x85\x01\x00\x00\x81\x03\x03UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU\x00\x00\x06À0\x00\x9c\x00\x9d\x01\x00\x00R\x00\x0b\x00\x04\x03\x00\x01\x02\x00[0m" HTTPStatus.BAD_REQUEST -
+205.210.31.229 - - [16/Sep/2024 04:59:46] "[33mGET / HTTP/1.0[0m" 404 -
+154.213.184.20 - - [16/Sep/2024 06:13:35] "[33mCONNECT dev.flood.at:443 HTTP/1.1[0m" 404 -
+154.213.184.20 - - [16/Sep/2024 06:26:25] code 400, message Bad request syntax ('\x05\x01\x00')
+154.213.184.20 - - [16/Sep/2024 06:26:25] "[35m[1m\x05\x01\x00[0m" HTTPStatus.BAD_REQUEST -
+147.185.132.46 - - [16/Sep/2024 06:42:28] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.146.63 - - [16/Sep/2024 08:16:37] code 400, message Bad request version ('À\x14À')
+167.94.146.63 - - [16/Sep/2024 08:16:37] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03·!\x7fºATÒ?P×<\x7f éÊ\x03k\x1a·¼\x9eÐÃ3«\x86|­ù/j\x07 ëÅ\x10÷Ä\x895gþ¦\x05\x9e£\x92Î#Ó)k2\x0b\x96~Jy¨3±¸ <¼\x00&Ì¨Ì©À/À0À+À,À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+167.94.146.63 - - [16/Sep/2024 08:16:41] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.146.63 - - [16/Sep/2024 08:16:45] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.146.63 - - [16/Sep/2024 08:16:46] code 505, message Invalid HTTP version (2.0)
+167.94.146.63 - - [16/Sep/2024 08:16:46] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+91.238.181.34 - - [16/Sep/2024 09:20:02] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+91.238.181.34 - - [16/Sep/2024 09:20:02] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+167.94.138.57 - - [16/Sep/2024 10:00:36] code 400, message Bad request version ('À\x14À')
+167.94.138.57 - - [16/Sep/2024 10:00:36] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03O\x7fÉ\x1fF\x8ci\x84gî\x12\x0b\x99±ézb|\x03\x01)èù\x912"\x19Lö\x84¼F \x8a¡¬ín\x99°\x9aúp\x8e¸\x02vS½{Ñ\x8c\x0c_Ð\x85\x18¯\x95\x0e´a\x9b\x12¢\x00&Ì¨Ì©À/À0À+À,À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+167.94.138.57 - - [16/Sep/2024 10:00:40] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.138.57 - - [16/Sep/2024 10:00:46] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.138.57 - - [16/Sep/2024 10:00:47] code 505, message Invalid HTTP version (2.0)
+167.94.138.57 - - [16/Sep/2024 10:00:47] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+206.168.34.32 - - [16/Sep/2024 10:14:13] "[33mGET / HTTP/1.1[0m" 404 -
+206.168.34.32 - - [16/Sep/2024 10:14:13] code 505, message Invalid HTTP version (2.0)
+206.168.34.32 - - [16/Sep/2024 10:14:13] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+123.160.223.74 - - [16/Sep/2024 12:06:45] "[33mGET / HTTP/1.1[0m" 404 -
+123.160.223.72 - - [16/Sep/2024 12:07:37] "[33mGET / HTTP/1.1[0m" 404 -
+123.160.223.73 - - [16/Sep/2024 12:09:04] "[33mGET / HTTP/1.1[0m" 404 -
+123.160.223.74 - - [16/Sep/2024 12:09:23] "[33mGET / HTTP/1.1[0m" 404 -
+45.155.91.30 - - [16/Sep/2024 12:48:16] code 400, message Bad request version ('\x96\x87\x00\x00¬À0À,À(À$À\x14À')
+45.155.91.30 - - [16/Sep/2024 12:48:16] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03Ó\x10¯\x1a¿$\x9d¥\x0eï\x09q\x19\\\x8b\\?tXCG,&\x8bÙ¸\x89ö¢\x0c\x96\x87\x00\x00¬À0À,À(À$À\x14À[0m" HTTPStatus.BAD_REQUEST -
+172.169.207.233 - - [16/Sep/2024 12:59:09] "[33mGET /v2/ HTTP/1.1[0m" 404 -
+154.213.184.19 - - [16/Sep/2024 13:57:52] "[33mCONNECT dev.flood.at:443 HTTP/1.1[0m" 404 -
+154.213.184.19 - - [16/Sep/2024 14:21:55] code 400, message Bad request syntax ('\x05\x01\x00')
+154.213.184.19 - - [16/Sep/2024 14:21:55] "[35m[1m\x05\x01\x00[0m" HTTPStatus.BAD_REQUEST -
+207.90.244.3 - - [16/Sep/2024 15:46:50] "[33mGET / HTTP/1.1[0m" 404 -
+207.90.244.3 - - [16/Sep/2024 15:46:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+199.45.154.113 - - [16/Sep/2024 15:58:16] code 400, message Bad request version ('À\x14À')
+199.45.154.113 - - [16/Sep/2024 15:58:16] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03^Á\x880Â\x08\x93C\x17\x8fè¢\x98ÿáúÔ¨\x87¡ótòY3\x8aB\x1fë\x93t; ò\x89/ªaiü´\x94Ú\x0d\x8a§\x9b­ÿ\x16t\x16ºbZZK+\x11\x06øü\x12é¯\x00&Ì¨Ì©À/À0À+À,À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+199.45.154.113 - - [16/Sep/2024 15:58:20] "[33mGET / HTTP/1.1[0m" 404 -
+199.45.154.113 - - [16/Sep/2024 15:58:23] "[33mGET / HTTP/1.1[0m" 404 -
+199.45.154.113 - - [16/Sep/2024 15:58:23] code 505, message Invalid HTTP version (2.0)
+199.45.154.113 - - [16/Sep/2024 15:58:23] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+167.94.145.104 - - [16/Sep/2024 21:37:03] code 400, message Bad request version ('À\x14À')
+167.94.145.104 - - [16/Sep/2024 21:37:03] "[35m[1m\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03ÒkÆ\x8c\x13w)ÍxnùÂ;uÂ\x12\x9a\x07qhÇX1ááhu\x87»Z×é \x99\x0cû{¸A+â±\\<vÁ^¶`¢\x00Á¸\x1eÚÅl¤\x90\x89\x09Ó\x0d)Ó\x00&Ì¨Ì©À/À0À+À,À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+167.94.145.104 - - [16/Sep/2024 21:37:07] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.145.104 - - [16/Sep/2024 21:37:11] "[33mGET / HTTP/1.1[0m" 404 -
+167.94.145.104 - - [16/Sep/2024 21:37:12] code 505, message Invalid HTTP version (2.0)
+167.94.145.104 - - [16/Sep/2024 21:37:12] "[35m[1mPRI * HTTP/2.0[0m" HTTPStatus.HTTP_VERSION_NOT_SUPPORTED -
+127.0.0.1 - - [17/Sep/2024 02:29:42] "[33mGET /api HTTP/1.0[0m" 404 -
+127.0.0.1 - - [17/Sep/2024 02:29:44] "[33mGET /api HTTP/1.0[0m" 404 -
+127.0.0.1 - - [17/Sep/2024 02:29:47] "[33mGET /api/data_dosen HTTP/1.0[0m" 404 -
+127.0.0.1 - - [17/Sep/2024 02:29:49] "[33mGET /api/data_dosen HTTP/1.0[0m" 404 -
+127.0.0.1 - - [17/Sep/2024 02:29:51] "[33mGET /api/data_dosen HTTP/1.0[0m" 404 -
+127.0.0.1 - - [17/Sep/2024 02:29:54] "[33mGET /api/data_dosen HTTP/1.0[0m" 404 -
+127.0.0.1 - - [17/Sep/2024 02:31:46] "[33mGET /api/data_dosen HTTP/1.0[0m" 404 -
+127.0.0.1 - - [17/Sep/2024 02:31:48] "[33mGET /api/data_dosen HTTP/1.0[0m" 404 -
+127.0.0.1 - - [17/Sep/2024 02:33:59] "[33mGET /api/model/ HTTP/1.0[0m" 404 -
+159.65.221.194 - - [17/Sep/2024 03:02:22] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03+Ð')
+159.65.221.194 - - [17/Sep/2024 03:02:22] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03+Ð\x1ei\x0eI\x06Þ\x91¸kþÌn¨\x9d\x84Õ\x10~[0m" HTTPStatus.BAD_REQUEST -
+159.65.221.194 - - [17/Sep/2024 03:02:23] code 400, message Bad request version ('À\x14À')
+159.65.221.194 - - [17/Sep/2024 03:02:23] "[35m[1m\x16\x03\x01\x00{\x01\x00\x00w\x03\x03å\x1a\x04'l­\x11¡Ù1ÉÊ\x86æ^ß¸\x88byßëÛ\x85Ïy\x068\x147;Ì\x00\x00\x1aÀ/À+À\x11À\x07À\x13À\x09À\x14À[0m" HTTPStatus.BAD_REQUEST -
+159.65.221.194 - - [17/Sep/2024 03:02:23] "[33mGET / HTTP/1.1[0m" 404 -
+45.84.89.2 - - [17/Sep/2024 04:30:41] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+45.84.89.2 - - [17/Sep/2024 04:30:41] "[35m[1m\x16\x03\x01\x00\x85\x01\x00\x00\x81\x03\x03UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU\x00\x00\x06À0\x00\x9c\x00\x9d\x01\x00\x00R\x00\x0b\x00\x04\x03\x00\x01\x02\x00[0m" HTTPStatus.BAD_REQUEST -
+91.238.181.34 - - [17/Sep/2024 04:39:20] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+91.238.181.34 - - [17/Sep/2024 04:39:20] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+45.155.91.30 - - [17/Sep/2024 04:39:34] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03\x94\x94¤\x11íú\x8f#[19b§z*\x18Ñªr\x95/ò³b\x07\x7f:ñî\x03\x06w\x00\x00¬À0À,À(À$À\x14À')
+45.155.91.30 - - [17/Sep/2024 04:39:34] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03\x94\x94¤\x11íú\x8f#[19b§z*\x18Ñªr\x95/ò³b\x07\x7f:ñî\x03\x06w\x00\x00¬À0À,À(À$À\x14À[0m" HTTPStatus.BAD_REQUEST -
+147.185.132.21 - - [17/Sep/2024 04:58:02] "[33mGET / HTTP/1.0[0m" 404 -
+198.235.24.59 - - [17/Sep/2024 05:46:43] "[33mGET / HTTP/1.1[0m" 404 -
+91.191.209.106 - - [17/Sep/2024 06:01:15] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+91.191.209.106 - - [17/Sep/2024 06:01:15] "[35m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+198.235.24.59 - - [17/Sep/2024 11:43:07] "[33mGET / HTTP/1.1[0m" 404 -

@@ -1,0 +1,94 @@
+Traceback (most recent call last):
+  File "/home/telkom/sdgstelkom/sinta/main.py", line 1, in <module>
+    from scrappingSinta import WebScraper
+  File "/home/telkom/sdgstelkom/sinta/scrappingSinta.py", line 1, in <module>
+    from selenium import webdriver
+ModuleNotFoundError: No module named 'selenium'
+Traceback (most recent call last):
+  File "/home/telkom/sdgstelkom/sinta/main.py", line 1, in <module>
+    from scrappingSinta import WebScraper
+  File "/home/telkom/sdgstelkom/sinta/scrappingSinta.py", line 212
+    download_dir = os.path.abspath("sinta/storage/result/scrappingSinta")
+TabError: inconsistent use of tabs and spaces in indentation
+2024-09-09 18:34:13.004502: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-09 18:34:13.047954: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-09 18:34:13.078449: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-09 18:34:13.145078: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-09-09 18:34:19.148761: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Terjadi error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Traceback (most recent call last):
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/urllib3/connection.py", line 464, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.10/http/client.py", line 1375, in getresponse
+    response.begin()
+  File "/usr/lib/python3.10/http/client.py", line 318, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.10/http/client.py", line 287, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/telkom/sdgstelkom/sinta/main.py", line 65, in <module>
+    run_sinta_main()
+  File "/home/telkom/sdgstelkom/sinta/main.py", line 31, in run_sinta_main
+    scraper.run(sinta_credentials, elsevier_credentials, sinta_url, num_pages)
+  File "/home/telkom/sdgstelkom/sinta/scrappingSinta.py", line 177, in run
+    self.login_sinta(*sinta_credentials)
+  File "/home/telkom/sdgstelkom/sinta/scrappingSinta.py", line 63, in login_sinta
+    self.driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/selenium/webdriver/remote/webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/selenium/webdriver/remote/webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py", line 352, in execute
+    response = self.command_executor.execute(driver_command, params)
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/selenium/webdriver/remote/remote_connection.py", line 302, in execute
+    return self._request(command_info[0], url, body=data)
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/selenium/webdriver/remote/remote_connection.py", line 322, in _request
+    response = self._conn.request(method, url, body=body, headers=headers)
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/urllib3/_request_methods.py", line 144, in request
+    return self.request_encode_body(
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/urllib3/_request_methods.py", line 279, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/urllib3/poolmanager.py", line 443, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/urllib3/util/retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/urllib3/util/util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+  File "/home/telkom/sdgstelkom/sdgstelkomenv/lib/python3.10/site-packages/urllib3/connection.py", line 464, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.10/http/client.py", line 1375, in getresponse
+    response.begin()
+  File "/usr/lib/python3.10/http/client.py", line 318, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.10/http/client.py", line 287, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Traceback (most recent call last):
+  File "/home/telkom/sdgstelkom/sinta/main.py", line 1, in <module>
+    from scrappingSinta import WebScraper
+  File "/home/telkom/sdgstelkom/sinta/scrappingSinta.py", line 1
+    mm6m6from selenium import webdriver
+              ^^^^^^^^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "/home/telkom/sdgstelkom/sinta/main.py", line 1, in <module>
+    from scrappingSinta import WebScraper
+  File "/home/telkom/sdgstelkom/sinta/scrappingSinta.py", line 1
+    mm6m6from selenium import webdriver
+              ^^^^^^^^
+SyntaxError: invalid syntax

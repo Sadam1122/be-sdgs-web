@@ -1,0 +1,659 @@
+from flask import Flask, jsonify, request,url_for
+from flask_cors import CORS
+import pandas as pd
+import re
+import json
+import datetime
+import logging
+import os
+from transformers import pipeline, AutoTokenizer
+from oplib.main import run_oplib_main
+from oplib.oplib2 import OpenLibrary
+from oplib.preprocessOplib import PreprocessLibrary
+from sinta.preprocessSinta import SintaPreprocessor
+# from sinta.main import run_sinta_main
+import fitz
+#app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__, static_url_path='/model/static', static_folder='static')
+from functools import lru_cache
+
+CORS(app)
+
+# Diedit hamdan
+def clean_phone_number(phone):
+    if pd.isna(phone):
+        return ''
+    cleaned_phone = re.sub(r'\D', '', phone)
+    return cleaned_phone[:10] if len(cleaned_phone) > 10 else cleaned_phone
+
+def select_single_email(email):
+    if pd.isna(email):
+        return None
+    return re.split(r'[;,#]', email)[0].strip()
+
+
+def get_publications_for_dosen(nama_lengkap, publications):
+    print(f"Searching publications for: {nama_lengkap}")  # Debugging line
+    matching_publications = [pub for pub in publications if nama_lengkap.lower() in pub.get('Penulis', '').lower()]
+    print(f"Found {len(matching_publications)} publications")  # Debugging line
+    return matching_publications
+
+def get_sdg_image_url(labels):
+    if labels is None:
+        return []
+    if not isinstance(labels, list):
+        return []
+    return [f'/model/static/images/{label}.png' for label in labels]
+
+# Load CSV and JSON files once and cache them
+@lru_cache(maxsize=1)
+def load_csv_file():
+    print("Loading CSV file...")
+    df = pd.read_csv('DataDosen.csv', delimiter=';', on_bad_lines='skip')
+    df.fillna('', inplace=True)
+    print("CSV file loaded.")
+    return df
+
+@lru_cache(maxsize=1)
+def load_json_file():
+    print("Loading publications JSON file...")
+    with open('hasil_akhir.json', 'r', encoding='utf-8') as f:
+        publications = json.load(f)
+    print("Publications JSON loaded.")
+    return publications
+
+def read_csv_to_json(page=1, per_page=10):
+    try:
+        # Load data
+        df = load_csv_file()
+        publications = load_json_file()
+
+        # Clean data
+        print("Cleaning data...")
+        df['NO HP'] = df['NO HP'].apply(clean_phone_number)
+        df['EMAIL'] = df['EMAIL'].apply(select_single_email)
+        print("Data cleaning completed.")
+
+        # Handle pagination
+        total_records = len(df)
+        
+        if per_page > 1000:
+            paginated_df = df
+        else:
+            start_idx = (page - 1) * per_page
+            end_idx = start_idx + per_page
+            paginated_df = df.iloc[start_idx:end_idx]  # Use .iloc for better performance with ranges
+
+        # Process each row in the paginated data
+        results = []
+        print("Processing rows...")
+        for _, row in paginated_df.iterrows():
+            fronttitle = row['FRONTTITLE']
+            backtitle = row['BACKTITLE']
+            nama_lengkap = row['NAMA LENGKAP']
+
+            combined_name = ' '.join(filter(None, [fronttitle, nama_lengkap, backtitle])).strip()
+            publications_for_dosen = get_publications_for_dosen(nama_lengkap, publications)
+
+            for pub in publications_for_dosen:
+                pub['sdgs_images'] = get_sdg_image_url(pub.get('Sdgs', []))
+
+            dosen_data = {
+                'no': row.get('NO', None),
+                'id': row.get('NIP', None),
+                'fronttitle': fronttitle,
+                'nama_lengkap': combined_name,
+                'backtitle': backtitle,
+                'jenis_kelamin': row.get('JENIS KELAMIN', ''),
+                'kode_dosen': row.get('KODE DOSEN', ''),
+                'nidn': row.get('NIDN', ''),
+                'status_pegawai': row.get('STATUS PEGAWAI', ''),
+                'jafung': row.get('JAFUNG', ''),
+                'lokasi_kerja': row.get('LOKASI KERJA', ''),
+                'jabatan_struktural': row.get('JABATAN STRUKTURAL', ''),
+                'email': row.get('EMAIL', ''),
+                'no_hp': row.get('NO HP', ''),
+                'lokasi_kerja_sotk': row.get('LOKASI KERJA SOTK', ''),
+                'publications': publications_for_dosen,
+                'total_publications': len(publications_for_dosen)
+            }
+            results.append(dosen_data)
+
+        print("Data processing completed.")
+        return {
+            'total_records': total_records,
+            'page': page,
+            'per_page': per_page,
+            'total_pages': (total_records + per_page - 1) // per_page,
+            'data': results
+        }
+
+    except FileNotFoundError as e:
+        print(f"File not found: {e}")
+        return {'error': 'File not found'}, 404
+    except json.JSONDecodeError as e:
+        print(f"Error decoding JSON file: {e}")
+        return {'error': 'Error decoding JSON file'}, 400
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return {'error': str(e)}, 500
+@app.route('/model/data_dosen', methods=['GET'])
+def get_data():
+    try:
+        # Get pagination parameters
+        page = int(request.args.get('page', 0))  # Start from 0
+        per_page = int(request.args.get('per_page', 10))
+
+        # Fetch paginated data
+        data = read_csv_to_json(page=page, per_page=per_page)
+
+        # Check if data contains an error
+        if isinstance(data, dict) and 'error' in data:
+            return jsonify(data), 400
+
+        response = {
+            'page': data['page'],
+            'per_page': data['per_page'],
+            'total_pages': data['total_pages'],
+            'total_records': data['total_records'],
+            'total_records_per_page': len(data['data']),
+            'data_dosen': data['data']
+        }
+
+        return jsonify(response)
+
+    except ValueError as e:
+        return jsonify({'error': 'Invalid parameters', 'details': str(e)}), 400
+
+@app.route('/model/detail_dosen', methods=['GET'])
+def get_data_by_nip():
+    try:
+        # Get parameters from the query string
+        page = int(request.args.get('page', 0))
+        nip = request.args.get('nip')
+        per_page = int(request.args.get('per_page', 10))  # Default per_page to 10 if not provided
+
+        if not nip:
+            return jsonify({'error': 'NIP parameter is required'}), 400
+
+        # Load paginated data
+        data = read_csv_to_json(page=page, per_page=per_page)
+
+        # Check if data contains an error
+        if isinstance(data, dict) and 'error' in data:
+            return jsonify(data), 400
+
+        # Search for the dosen by NIP in the current page
+        dosen = next((d for d in data['data'] if d['id'] == nip), None)
+
+        if not dosen:
+            # Load the last page to check for the last dosen in the CSV
+            total_pages = data['total_pages']
+            if page != total_pages - 1:  # If not already on the last page
+                last_page_data = read_csv_to_json(page=total_pages - 1, per_page=per_page)
+                dosen = next((d for d in last_page_data['data'] if d['id'] == nip), None)
+
+        if dosen:
+            # Construct the full name without fronttitle and backtitle
+            nama_lengkap_only = dosen['nama_lengkap']
+
+            # Remove fronttitle and backtitle if they exist
+            if dosen['fronttitle']:
+                nama_lengkap_only = nama_lengkap_only.replace(dosen['fronttitle'], '').strip()
+            if dosen['backtitle']:
+                nama_lengkap_only = nama_lengkap_only.replace(dosen['backtitle'], '').strip()
+
+            # Load 'hasil_akhir.json' for SDGs mapping
+            with open('hasil_akhir.json', 'r', encoding='utf-8') as f:
+                hasil_akhir = json.load(f)
+
+            # Fetch publications using the adjusted name (without titles)
+            publications_for_dosen = get_publications_for_dosen(nama_lengkap_only, hasil_akhir) or []
+
+            # Add 'sdgs_images' to each publication
+            for pub in publications_for_dosen:
+                pub['sdgs_images'] = get_sdg_image_url(pub.get('Sdgs', []))
+
+            # Calculate SDGs counts
+            sdgs_counts = {f"SDGS{i}": 0 for i in range(1, 18)}
+            for publikasi in publications_for_dosen:
+                # Ensure that 'Sdgs' is a list before iterating
+                sdgs_list = publikasi.get('Sdgs', [])
+                if isinstance(sdgs_list, list):
+                    for sdg in sdgs_list:
+                        if sdg in sdgs_counts:
+                            sdgs_counts[sdg] += 1
+
+            dosen['publications'] = publications_for_dosen
+            dosen['sdgs_pemetaan'] = []
+            dosen['sdgs_counts'] = sdgs_counts
+
+            return jsonify(dosen)
+        else:
+            return jsonify({'error': 'Dosen not found'}), 404
+
+    except ValueError as e:
+        return jsonify({'error': 'Invalid parameter', 'details': str(e)}), 400
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+        
+
+@app.route('/model/get-hasil-akhir', methods=['GET'])
+def get_hasil_akhir():
+    try:
+        hasil_akhir_path = 'hasil_akhir.json'
+
+        # Check if the file exists
+        if not os.path.exists(hasil_akhir_path):
+            return jsonify({"error": "File not found"}), 404
+
+        with open(hasil_akhir_path, 'r') as file:
+            data = json.load(file)
+
+        if data is None or not isinstance(data, list):
+            return jsonify({"error": "Invalid data format in JSON file"}), 500
+
+        def get_sdg_image_url(labels):
+            if labels is None:
+                return []
+            if not isinstance(labels, list):
+                return []
+            return [url_for('static', filename=f'images/{label}.png') for label in labels]
+
+        for item in data:
+            if 'Sdgs' in item:
+                item['sdgs_images'] = get_sdg_image_url(item['Sdgs'])
+            else:
+                item['sdgs_images'] = []
+
+        # Pagination
+        page = int(request.args.get('page', 0))  # Start page from 0
+        per_page = int(request.args.get('per_page', 10))
+
+        start = page * per_page
+        end = start + per_page
+
+        paginated_data = data[start:end]
+        total_items = len(data)
+        total_pages = (total_items + per_page - 1) // per_page
+
+        response = {
+            'page': page,
+            'per_page': per_page,
+            'total_items': total_items,
+            'total_pages': total_pages,
+            'data': paginated_data
+        }
+
+        return jsonify(response)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/model/get-data-oplib', methods=['GET'])
+def get_data_oplib():
+    # Create an instance of the OpenLibrary class
+    ol = OpenLibrary()
+
+    # Define the search options based on the request or default values
+    search_options = {
+        'type': request.args.get('type', '4'),  # Default to SKRIPSI if not provided
+        'start_date': request.args.get('start_date', '2022-12-30'),
+        'end_date': request.args.get('end_date', '2022-12-31'),
+        # Add other search options as needed
+    }
+
+    # Get the data from the Open Library
+    content = ol.get_all_data_from_range_date(**search_options)
+
+    # Parse the results
+    parsed_results = list(ol.parse_results(content))
+
+    # Return the results as a JSON response
+    return jsonify(parsed_results)
+
+
+
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+def truncate_text(text, tokenizer, max_length=512):
+    tokens = tokenizer.tokenize(text)
+    if len(tokens) > max_length:
+        return tokenizer.convert_tokens_to_string(tokens[:max_length])
+    return text
+
+def classify_sdgs(text):
+    tokenizer = AutoTokenizer.from_pretrained("Zaniiiii/sdgs")
+    classifier = pipeline("text-classification", model="Zaniiiii/sdgs", return_all_scores=True)
+    truncated_text = truncate_text(text, tokenizer)
+    results = classifier(truncated_text)
+    labels = [result['label'] for result in results[0] if result['score'] > 0.5]
+    return labels if labels else None
+
+@app.route('/model/paper', methods=['POST'])
+def post_paper():
+    try:
+        data = request.json
+        logging.info("Received data: %s", data)
+
+        required_fields = ['Judul', 'Penulis', 'Tahun', 'Abstrak', 'Source']
+        if not data or not all(field in data for field in required_fields):
+            logging.warning("Invalid JSON data or missing fields: %s", data)
+            return jsonify({'error': 'Invalid JSON data or missing fields'}), 400
+
+        abstrak = data['Abstrak']
+        sdgs_result = classify_sdgs(abstrak)
+
+        if not sdgs_result:
+            logging.warning("SDGs classification failed for abstract: %s", abstrak)
+            return jsonify({'error': 'SDGs classification failed'}), 400
+
+        data['Sdgs'] = sdgs_result
+
+        try:
+            with open('hasil_akhir.json', 'r', encoding='utf-8') as f:
+                hasil_akhir = json.load(f)
+        except FileNotFoundError:
+            hasil_akhir = []
+        
+        if any(entry['Judul'] == data['Judul'] for entry in hasil_akhir):
+            logging.warning("Duplicate entry found for title: %s", data['Judul'])
+            return jsonify({'error': 'Duplicate entry: Data with the same title already exists'}), 400
+
+        hasil_akhir.append(data)
+
+        with open('hasil_akhir.json', 'w', encoding='utf-8') as f:
+            json.dump(hasil_akhir, f, ensure_ascii=False, indent=4)
+
+        logging.info("Data added successfully: %s", data)
+        return jsonify({
+            'message': 'Data added successfully',
+            'data': {
+                'Judul': data['Judul'],
+                'Penulis': data['Penulis'],
+                'Tahun': data['Tahun'],
+                'Abstrak': data['Abstrak'],
+                'Source': data['Source'],
+                'Sdgs': data['Sdgs']
+            }
+        }), 201
+
+    except KeyError as e:
+        logging.error("Missing key: %s", str(e))
+        return jsonify({'error': f'Missing key: {str(e)}'}), 400
+    except json.JSONDecodeError as e:
+        logging.error("Invalid JSON format: %s", str(e))
+        return jsonify({'error': 'Invalid JSON format'}), 400
+    except Exception as e:
+        logging.error("Unhandled exception: %s", str(e), exc_info=True)
+        return jsonify({'error': str(e)}), 500
+    except json.JSONDecodeError as e:
+        logging.error("JSON decoding error: %s", str(e))
+        return jsonify({'error': 'Invalid JSON format, please check for trailing commas or other syntax errors.'}), 400
+
+
+UPLOAD_FOLDER = '/file'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+@app.route('/model/post-data-sinta', methods = ['post'])
+def upload_file_sinta():
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part'})
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'})
+    
+    # Simpan file dan lakukan ekstraksi
+    current_date = datetime.date.today()
+    end_day, end_month, end_year = current_date.day, current_date.month, current_date.year
+    file_path = f"./sinta/storage/result/scrappingSinta/crawleddSinta{end_day}-{end_month}-{end_year}.csv"
+    file.save(file_path)
+    preprocessor = SintaPreprocessor(file_path)
+    processed_df = preprocessor.preprocess()
+    file_result = f'preProcessSinta{end_day}-{end_month}-{end_year}'
+    preprocessor.save_result_main(file_result)
+        
+     ## Klasifikasi
+    def truncate_text(text, tokenizer, max_length=512):
+        tokens = tokenizer(text, truncation=True, max_length=max_length, return_tensors='pt')
+        return tokenizer.decode(tokens['input_ids'][0], skip_special_tokens=True)
+
+    def classify_sdgs(text):
+        truncated_text = truncate_text(text, tokenizer)
+        results = classifier(truncated_text)
+        labels = [result['label'] for result in results[0] if result['score'] > 0.5]
+        return labels if labels else None
+    
+    df_final = pd.read_json(f'./sinta/storage/result/preprocessSinta/{file_result}.json')
+    print(df_final.info())
+    df = pd.read_json("./hasil_akhir.json")
+    classifier = pipeline("text-classification", model="Zaniiiii/sdgs", return_all_scores=True)
+
+    tokenizer = AutoTokenizer.from_pretrained("Zaniiiii/sdgs")
+    df_final['Sdgs'] = df_final['Abstrak'].apply(classify_sdgs)
+    df_final["Source"] = "Sinta"
+    print(df_final.info())
+    print(df.info())
+    df = pd.concat([df, df_final])
+    df = df.drop_duplicates(subset=['Judul'])
+    df.to_json("./hasil_akhir.json",orient='records')
+    print(df.info())
+    return "Data Sinta added"
+
+@app.route('/model/post-data-oplib', methods=['POST'])
+def post_data_oplib():
+    try:
+        current_date = datetime.date.today()
+        current_date = current_date - datetime.timedelta(days=0)
+        one_month_ago = current_date - datetime.timedelta(days=14)
+        run_oplib_main(current_date, one_month_ago)
+        return jsonify({'message': 'Oplib processing completed successfully'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/model/upload', methods=['POST'])
+def upload_file():
+    try:
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file part'}), 400
+        file = request.files['file']
+        if file.filename == '':
+            return jsonify({'error': 'No selected file'}), 400
+
+        # Simpan file dan lakukan ekstraksi
+        file_path = f"./upload/{file.filename}"
+        file.save(file_path)
+        extracted_data = extract_pdf_data_pymupdf(file_path)
+        df = pd.DataFrame([extracted_data])
+        file_result = file_path[:-4] + ".csv"
+        file_end = file.filename[:-4]
+        df.to_csv(file_result)
+        preprocessor = SintaPreprocessor(file_result)
+        processed_df = preprocessor.preprocess()
+        preprocessor.save_result2(file_end)
+
+        def truncate_text(text, tokenizer, max_length=512):
+            tokens = tokenizer(text, truncation=True, max_length=max_length, return_tensors='pt')
+            return tokenizer.decode(tokens['input_ids'][0], skip_special_tokens=True)
+
+        def classify_sdgs(text):
+            truncated_text = truncate_text(text, tokenizer)
+            results = classifier(truncated_text)
+            labels = [result['label'] for result in results[0] if result['score'] > 0.5]
+            return labels if labels else None
+
+        # Klasifikasi
+        df_final = pd.read_json(f'./upload/{file_end}.json')
+        print("=" * 32)
+        print(df_final.info())
+        df = pd.read_json("./hasil_akhir.json")
+        classifier = pipeline("text-classification", model="Zaniiiii/sdgs", return_all_scores=True)
+
+        tokenizer = AutoTokenizer.from_pretrained("Zaniiiii/sdgs")
+        df_final['Sdgs'] = df_final['Abstrak'].apply(classify_sdgs)
+        df_final["Source"] = "Upload"
+        print(df_final.info())
+        print(df.info())
+
+        # Cek apakah semua data di df_final sudah ada di df
+        merged = df.merge(df_final, on='Judul', how='inner')
+        if len(merged) == len(df_final):
+            return jsonify({'error': 'Uploaded file already exists in database.'}), 400
+
+        # Jika tidak semua data duplikat, lanjutkan dan simpan hasilnya
+        df = pd.concat([df, df_final])
+        df = df.drop_duplicates(subset=['Judul'])
+        df.to_json("./hasil_akhir.json", orient='records')
+        print(df.info())
+
+        return jsonify(extracted_data), 200
+
+    except FileNotFoundError as e:
+        return jsonify({'error': f'File not found: {str(e)}'}), 500
+    except pd.errors.EmptyDataError as e:
+        return jsonify({'error': f'Empty data error: {str(e)}'}), 500
+    except Exception as e:
+        print("Terjadi error:", str(e))
+        return jsonify({'error': str(e)}), 500
+
+UPLOAD_FOLDER = '/file'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+def extract_pdf_data_pymupdf(pdf_path):
+    # Membuka file PDF
+
+    doc = fitz.open(pdf_path)
+    text = ""
+    
+    # Ekstrak teks dari semua halaman
+    for page in doc:
+        text += page.get_text()
+
+    # Ekstrak teks dari halaman pertama saja
+    first_page_text = doc[0].get_text()
+
+    # Regex untuk menangkap judul setelah "homepage: www.GrowingScience.com/ijds"
+    title_match = re.search(r'homepage: www\.GrowingScience\.com/ijds\s+(.+?)\s+\n', first_page_text, re.DOTALL)
+    if title_match:
+        title = title_match.group(1).strip()
+        # Menghapus karakter newline yang berlebihan
+        title = re.sub(r'\n+', ' ', title).strip()
+    else:
+        title = "Not found"
+
+    # Regex untuk menangkap abstrak
+    abstract_match = re.search(r'A B S T R A C T(.+)', text, re.DOTALL)
+
+    if abstract_match:
+        abstract = abstract_match.group(1).strip()
+        
+        # Ambil semua teks setelah "Accepted:"
+        accepted_match = re.search(r'Accepted:.*?\n(.*)', abstract, re.DOTALL)
+        if accepted_match:
+            # Ambil teks setelah "Accepted:"
+            abstract_cleaned = accepted_match.group(1).strip()
+            
+            # Hapus semua teks setelah "\n©"
+            abstract_cleaned = re.sub(r'\n©.*', '', abstract_cleaned, flags=re.DOTALL).strip()
+            
+            # Hapus semua teks sebelum "\n\n" (dua baris kosong)
+            abstract_cleaned = re.sub(r'^.*?\n \n', '', abstract_cleaned, flags=re.DOTALL).strip()
+        else:
+            abstract_cleaned = "Not found"
+    else:
+        abstract_cleaned = "Not found"
+
+    # Menghapus semua karakter newline (\n)
+    abstract_cleaned = re.sub(r'\n+', ' ', abstract_cleaned).strip()
+
+    accepted_date_match = re.search(r'Accepted: .*?(\d{4})', text)
+    if accepted_date_match:
+        accepted_date = int(accepted_date_match.group(1))
+    else:
+        accepted_date = "Not found"
+
+    authors_match = re.search(r'www\.GrowingScience\.com/ijds\s+\n(.+?)\na', first_page_text, re.DOTALL)
+    if authors_match:
+        print("1")
+        authors = authors_match.group(1).strip()
+        
+        # Hapus bagian "www.GrowingScience.com/ijds \n \n \n \n \n \n \n"
+        authors = re.sub(r'www\.GrowingScience\.com/ijds\s', '', authors, flags=re.DOTALL).strip()
+
+        # Hapus semua teks sebelum "\n \n \n \n"
+        authors = re.sub(r'^.*?\n \n', '', authors, flags=re.DOTALL).strip()
+
+        # Hapus semua karakter "*"
+        authors = authors.replace('*', '').strip()
+
+        # Hapus satu karakter sebelum setiap koma
+        authors = re.sub(r'\s,', ',', authors)
+    else:
+        authors = "Not found"
+
+    authors = re.sub(r'\n+', ' ', authors).strip()
+
+    # Ubah "and" menjadi ","
+    authors = authors.replace(" and ", ", ")
+
+    # Hapus satu karakter sebelum setiap koma
+    authors = re.sub(r'.(?=,)', '', authors)
+
+    # Hapus satu karakter terakhir
+    authors = authors[:-1]
+
+    data = {
+        "Title": title,
+        "Abstract": abstract_cleaned,
+        "Year": accepted_date if isinstance(accepted_date, int) else "Not found",
+        "Authors": authors,
+        # "first_page_text": first_page_text.strip()  # Teks dari halaman pertama saja
+    }
+
+    return data
+
+
+@app.route('/model/get-sdgs-count', methods=['GET'])
+def get_sdgs_count():
+    # Path to your JSON file
+    hasil_akhir_path = 'hasil_akhir.json'
+
+    # Read the JSON data
+    with open(hasil_akhir_path, 'r') as file:
+        data = json.load(file)
+
+    # Get the year parameter from the query string, if provided
+    year_param = request.args.get('Tahun', None)
+
+    # Initialize a dictionary to count occurrences of each SDG
+    sdgs_count = {f'SDGS{i}': 0 for i in range(1, 18)}
+
+    # Initialize a set to collect available years
+    available_years = set()
+
+    # Iterate through the data and count SDGs
+    for item in data:
+        # Collect available years
+        if 'Tahun' in item:
+            available_years.add(item['Tahun'])
+        
+        # If a year is specified, skip entries that don't match
+        if year_param and 'Tahun' in item and item['Tahun'] != int(year_param):
+            continue
+
+        # Count SDGs if they are present and are a list
+        if 'Sdgs' in item and isinstance(item['Sdgs'], list):
+            for sdg in item['Sdgs']:
+                if sdg in sdgs_count:
+                    sdgs_count[sdg] += 1
+
+    # Convert available years set to a sorted list
+    available_years = sorted(list(available_years))
+
+    # Return the SDGs count and available years as a JSON response
+    return jsonify({
+        'sdgs_count': sdgs_count,
+        'available_years': available_years
+    })
+if __name__ == '__main__':
+    app.run(host="", port=3900)
